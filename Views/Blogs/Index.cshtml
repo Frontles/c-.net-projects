@@ -1,0 +1,69 @@
+﻿@model IEnumerable<filmdizikitap.Models.BlogModel>
+@using PagedList.Mvc;
+@using PagedList;
+@{
+    ViewBag.Title = "Tüm Haberler";
+}
+
+<div class="col-md-12">
+    <div class="row">
+            
+        <div class="col-md-8">
+            <div class="container-fluid bg-light pt-5">
+                <div class="container py-5">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-6 col-md-8 col text-center mb-4">
+                            <h6 class="text-primary font-weight-normal text-uppercase mb-3">Kategoriler</h6>
+                            <h1 class="mb-4">Tüm Gönderiler</h1>
+                        </div>
+                    </div>
+                    <div class="row pb-3">
+                        @foreach (var blog in Model)
+                        {
+                            <div class="col-md-4 mb-4">
+                                <div class="card border-0 mb-2">
+                                    <a href="/Blogs/Details/@blog.Id">
+
+                                        <img class="card-img-top" src="/filmdizi/img/@blog.Resim" alt="@blog.Resim">
+                                    </a>
+                                    <div class="card-body bg-white p-4">
+                                        <div class="d-flex align-items-center mb-3">
+                                            <a class="btn btn-primary" href="/Blogs/Details/@blog.Id"><i class="fa fa-link"></i></a>
+                                            <h5 class="m-0 ml-3 text-truncate">@blog.Baslik</h5>
+                                        </div>
+                                        <p>@blog.Icerik</p>
+                                        <div class="d-flex">
+                                            <small class="mr-3"><i class="fa fa-user text-primary"></i> Admin</small>
+                                            <small class="mr-3"><i class="fa fa-calendar text-primary"></i>@blog.Eklenme_Tarihi</small>
+                                            <small class="mr-3"><i class="fa fa-comments text-primary"></i> 0 </small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+
+                        <div class="col-md-12 mb-4">
+
+                            <span>@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))</span>
+
+                        </div><!-- /.text-center -->
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3" style="margin-top:8%;">
+            <div class="container-fluid bg-light">
+                @{ Html.RenderAction("KategoriListesi", "Category");}
+                @{ Html.RenderAction("RecentPosts", "Blogs");}
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- Blog Start -->
+
+<!-- Blog End -->
+

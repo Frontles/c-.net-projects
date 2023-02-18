@@ -1,0 +1,116 @@
+﻿@model filmdizikitap.Models.Blog
+
+@{
+    ViewBag.Title = "Blog Düzenle";
+}
+
+<div class="col-md-8" style="margin-left:20%;">
+
+
+    <h2>Blog Düzenle</h2>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+<div class="form-horizontal">
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Baslik, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Baslik, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Baslik, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Aciklama, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Aciklama, new { @class = "form-control required" })
+            @Html.ValidationMessageFor(model => model.Aciklama, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Resim, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Resim, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Resim, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Icerik, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.Icerik, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Icerik, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.yazar_adi, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.yazar_adi, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.yazar_adi, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.yazar_aciklama, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextAreaFor(model => model.yazar_aciklama, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.yazar_aciklama, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.yazar_resim, new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.yazar_resim, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.yazar_resim, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+
+
+        <div class="checkbox">
+            @Html.LabelFor(model => model.Onay, new { @class = "control-label col-md-1" })
+            @Html.CheckBoxFor(model => model.Onay)
+            @Html.ValidationMessageFor(model => model.Onay, "", new { @class = "text-danger" })
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <div class="checkbox">
+            @Html.LabelFor(model => model.Anasayfa, new { @class = "control-label col-md-1" })
+            @Html.CheckBoxFor(model => model.Anasayfa)
+            @Html.ValidationMessageFor(model => model.Anasayfa, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.CategoryID, "Kategori Adı:", new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.DropDownList("CategoryID", null, "Kategori Seçiniz", new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CategoryID, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Kaydet" class="btn btn-primary" />
+            @Html.ActionLink("Listeye Dön", "BlogListesi", null, new { @class = "btn btn-danger" })
+        </div>
+
+    </div>
+</div>
+    }
+
+    
+</div>

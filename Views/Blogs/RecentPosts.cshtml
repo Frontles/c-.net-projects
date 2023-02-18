@@ -1,0 +1,24 @@
+﻿@model  IEnumerable<filmdizikitap.Models.Blog>
+@{ 
+   var x =  Model.OrderByDescending(i => i.Id);
+}
+<div class="mb-5">
+    <h3 class="mb-4 section-title">Popüler Gönderiler </h3>
+    @foreach (var blog in x)
+    {
+        
+            <li><a href=""><i class="fa fa-caret-right"></i>  </a></li>
+        
+
+    <div class="d-flex align-items-center border-bottom mb-3 pb-3">
+        <img class="img-fluid" src="/filmdizi/img/@blog.Resim" style="width: 80px; height: 80px;" alt="">
+        <div class="d-flex flex-column pl-3">
+            <a class="text-dark mb-2" href="/Blogs/Details/@blog.Id">@blog.Baslik</a>
+            <div class="d-flex">
+                <small class="mr-3"><i class="fa fa-user text-primary"></i> Admin</small>
+                <small class="mr-3"><i class="fa fa-calendar text-primary"></i> @blog.Eklenme_Tarihi</small>
+            </div>
+        </div>
+    </div>
+    }
+</div>

@@ -1,0 +1,98 @@
+﻿@model IEnumerable<filmdizikitap.Models.Blog>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Blog Listesi";
+}
+<br /><br />
+<div style="margin-left:16.5%;" class="col-md-8">
+
+    <h2>Blog Listesi  @Html.ActionLink("Yeni Blog Ekle", "Create", null, new { @class = "btn btn-warning" })</h2>
+
+    <br />
+    <br />
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Category.KategoriAdi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Baslik)
+            </th>
+
+            
+            <th>
+                @Html.DisplayNameFor(model => model.Eklenme_Tarihi)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Onay)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Anasayfa)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.yazar_adi)
+            </th>
+
+
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.KategoriAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Baslik)
+                </td>
+
+               
+                <td>
+                    @Html.DisplayFor(modelItem => item.Eklenme_Tarihi)
+                </td>
+                <td>
+                    @if (item.Onay)
+                    {
+                        <label class="label label-success">Onaylı</label>
+                    }
+                    else
+
+                    {
+                        <label class="label label-warning">Onay Bekliyor.</label>
+                    }
+                </td>
+                <td>
+                    @if (item.Anasayfa)
+                    {
+                        <label class="label label-success">Ana Sayfada</label>
+                    }
+                    else
+
+                    {
+                        <label class="label label-warning">Ana Sayfada Değil !</label>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.yazar_adi)
+                </td>
+
+                <td style="width:15%;">
+                    @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-warning btn-md" })
+
+                    @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger btn-md" })
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <div style="padding-left: 10%;">
+        <span>@Html.PagedListPager((IPagedList)Model, page => Url.Action("Index", new { page }))</span>
+    </div>
+    <br />
+    <br />
+    <br />
+
+</div>

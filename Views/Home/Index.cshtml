@@ -1,0 +1,148 @@
+﻿@model IEnumerable<filmdizikitap.Models.BlogModel>
+@{
+    ViewBag.Title = "Ana Sayfa";
+
+    var x = Model.OrderByDescending(z => z.Id);
+}
+
+<!-- Carousel Start -->
+<div class="container-fluid p-0">
+    <div id="header-carousel" class="carousel slide" data-ride="carousel">
+        <div class="carousel-inner">
+            @{int i = 0; }
+            @foreach (var blog in x)
+            {
+
+                if (blog.Anasayfa == true && blog.Onay == true)
+                {
+                    i++;
+                    var active = i == 1 ? "active" : "";
+                    <div class="carousel-item @active">
+                        <img class="w-100" src="/filmdizi/img/@blog.Resim" alt="@blog.Resim">
+
+                        <div class="carousel-caption d-flex flex-column align-items-center justify-content-center ">
+                            <div class="p-3" style="max-width:800px;">
+                                <h6 class="text-primary text-uppercase font-weight-normal mb-md-3"> @blog.Icerik</h6>
+                                <h3 class="display-3 text-white mb-md-4">@blog.Baslik</h3>
+                                <a href="/Blogs/Details/@blog.Id" class="btn btn-primary py-md-3 px-md-5 mt-2 mt-md-4 "> Haberin Devamı >> </a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+        </div>
+        <a class="carousel-control-prev" href="#header-carousel" data-slide="prev">
+            <div class="btn btn-primary" style="width: 45px; height: 45px;">
+                <span class="carousel-control-prev-icon mb-n2"></span>
+            </div>
+        </a>
+        <a class="carousel-control-next" href="#header-carousel" data-slide="next">
+            <div class="btn btn-primary" style="width: 45px; height: 45px;">
+                <span class="carousel-control-next-icon mb-n2"></span>
+            </div>
+        </a>
+    </div>
+</div>
+<!-- Carousel End -->
+<!-- Projects Start -->
+<div class="container-fluid py-5">
+    <div class="container py-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-6 col-md-8 col text-center mb-4">
+                <h6 class="text-primary font-weight-normal text-uppercase mb-3">Seçili Kategoride Öne Çıkanlar</h6>
+                <h1 class="mb-4">Öne Çıkanlar</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12 text-center mb-2">
+                <ul class="list-inline mb-4" id="portfolio-flters">
+                    <li class="btn btn-outline-primary m-1 active" data-filter="*">Tümü</li>
+                    <li class="btn btn-outline-primary m-1" data-filter=".first">Filmler</li>
+                    <li class="btn btn-outline-primary m-1" data-filter=".second">Diziler</li>
+                    <li class="btn btn-outline-primary m-1" data-filter=".third">Kitaplar</li>
+                </ul>
+            </div>
+        </div>
+        <div class="row mx-1 portfolio-container">
+            @foreach (var blog in x)
+            {
+                if (blog.CategoryID == 1)
+                {
+                    <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item first">
+
+                        <div class="position-relative overflow-hidden">
+
+                            <div class="portfolio-img d-flex align-items-center justify-content-center">
+                                <img class="img-fluid" src="/filmdizi/img/@blog.Resim" alt="">
+                            </div>
+                            <div class="portfolio-text bg-secondary d-flex flex-column align-items-center justify-content-center">
+                                <h4 class="text-white mb-4">@blog.Baslik</h4>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <a class="btn btn-outline-primary m-1" href="/Blogs/Details/@blog.Id">
+                                        Habere Git
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+            }
+
+            @foreach (var blog in x)
+            {
+                if (blog.CategoryID == 2)
+                {
+                    <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item second">
+
+                        <div class="position-relative overflow-hidden">
+
+                            <div class="portfolio-img d-flex align-items-center justify-content-center">
+                                <img class="img-fluid" src="/filmdizi/img/@blog.Resim" alt="">
+                            </div>
+                            <div class="portfolio-text bg-secondary d-flex flex-column align-items-center justify-content-center">
+                                <h4 class="text-white mb-4">@blog.Baslik</h4>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <a class="btn btn-outline-primary m-1" href="/Blogs/Details/@blog.Id">
+                                        Habere Git
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+            }
+
+            @foreach (var blog in x)
+            {
+                if (blog.CategoryID == 3)
+                {
+                    <div class="col-lg-4 col-md-6 col-sm-12 p-0 portfolio-item third">
+
+                        <div class="position-relative overflow-hidden">
+
+                            <div class="portfolio-img d-flex align-items-center justify-content-center">
+                                <img class="img-fluid" src="/filmdizi/img/@blog.Resim" alt="">
+                            </div>
+                            <div class="portfolio-text bg-secondary d-flex flex-column align-items-center justify-content-center">
+                                <h4 class="text-white mb-4">@blog.Baslik</h4>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <a class="btn btn-outline-primary m-1" href="/Blogs/Details/@blog.Id">
+                                        Habere Git
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>
+<!-- Projects End -->

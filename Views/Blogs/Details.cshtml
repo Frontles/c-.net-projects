@@ -1,0 +1,100 @@
+﻿@model filmdizikitap.Models.Blog
+
+@{
+    ViewBag.Title = Model.Baslik;
+    
+}
+
+<!-- Page Header Start -->
+<div class="container-fluid bg-secondary py-5">
+    <div class="container py-5">
+        <div class="row align-items-center py-4">
+            <div class="col-md-6 text-center text-md-left">
+                <h1 class="mb-4 mb-md-0 text-primary text-uppercase">@Model.Baslik</h1>
+            </div>
+            <div class="col-md-6 text-center text-md-right">
+                <div class="d-inline-flex align-items-center">
+                    <a class="btn btn-outline-primary" href="">Ana Sayfa</a>
+                    <i class="fas fa-angle-double-right text-primary mx-2"></i>
+                    <a class="btn btn-outline-primary disabled" href="">@Model.CategoryID</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Page Header Start -->
+<!-- Detail Start -->
+<div class="container py-5">
+    <div class="row pt-5">
+        <div class="col-lg-8">
+            <div class="d-flex flex-column text-left mb-4">
+                <h6 class="text-primary font-weight-normal text-uppercase mb-3">Blog Detayları</h6>
+                <h1 class="mb-4 section-title">@Model.Baslik</h1>
+                <div class="d-index-flex mb-2">
+                    <span class="mr-3"><i class="fa fa-user text-primary"></i> Admin</span>
+                    <span class="mr-3"><i class="fa fa-calendar text-primary"></i> @Model.Eklenme_Tarihi</span>
+                    <span class="mr-3"><i class="fa fa-comments text-primary"></i>0 </span>
+                </div>
+            </div>
+
+            <div class="mb-5">
+                <img class="img-fluid w-100 mb-4" src="/filmdizi/img/@Model.Resim" alt="Image">
+                <p><strong>@Model.Icerik</strong></p>
+                <p>@Model.Aciklama</p>
+            </div>
+
+            <div class="mb-5">
+                <h3 class="mb-4 section-title"> Toplam 1 Yorum</h3>
+                
+                <div class="media mb-4">
+                    <img src="/filmdizi/img/user.jpg" alt="Image" class="img-fluid mr-3 mt-1" style="width: 45px;">
+                    <div class="media-body">
+                        <h6>John Doe <small><i>01 Jan 2045 at 12:00pm</i></small></h6>
+                        <p>Çok güzel hazırlanmış bir site çok aşırı beğendim tebrikleerr</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-light p-5">
+                <h3 class="mb-4 section-title">Yorum Yapın !</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="name">Adınız Soyadınız : </label>
+                        <input type="text" class="form-control" required id="name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">E-Posta Adresiniz :</label>
+                        <input type="email" class="form-control" required id="email">
+                    </div>
+                    
+
+                    <div class="form-group">
+                        <label for="message">Mesajınız : </label>
+                        <textarea id="message" cols="30" rows="8" required class="form-control"></textarea>
+                    </div>
+                    <div class="form-group mb-0">
+                        <input type="submit" value="Yorum Yap" class="btn btn-primary px-3">
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="col-lg-4 mt-5 mt-lg-0">
+            <div class="d-flex flex-column text-center bg-secondary mb-5 py-5 px-4">
+                <img src="/filmdizi/img/@Model.yazar_resim" class="img-fluid mx-auto mb-3" style="width: 100px;">
+                <h3 class="text-primary mb-3">@Model.yazar_adi</h3>
+                <p class="text-white m-0">@Model.yazar_aciklama</p>
+            </div>
+            @{ Html.RenderAction("KategoriListesi", "Category");}
+            <div class="mb-5">
+                <img src="/filmdizi/img/@Model.Resim" alt="@Model.Resim" class="img-fluid">
+            </div>
+
+            @{ Html.RenderAction("RecentPosts", "Blogs");}
+            <div class="mb-5">
+                <img src="/filmdizi/img/@Model.Resim" alt="" class="img-fluid">
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Detail End -->

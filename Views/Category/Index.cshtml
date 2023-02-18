@@ -1,0 +1,41 @@
+﻿@model IEnumerable<filmdizikitap.Models.CategoryModel>
+@using PagedList;
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Kategoriler";
+}
+
+<div class="col-md-8" style="margin-left:15%;">
+    <h2>Kategoriler</h2>
+
+    <p>
+        @Html.ActionLink("Yeni Kategori Ekle", "Create",null, new { @class = "btn btn-danger" })
+    </p>
+    <table class="table table-bordered table-striped table-hover">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KategoriAdi)
+            </th>
+            <th>@Html.DisplayNameFor(model => model.BlogSayisi)</th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KategoriAdi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BlogSayisi)
+                </td>
+                <td style="width:20%;">
+                    @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }, new { @class = "btn btn-primary" })
+
+                    @Html.ActionLink("Sil", "Delete", new { id = item.Id }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

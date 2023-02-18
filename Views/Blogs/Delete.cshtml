@@ -1,0 +1,95 @@
+﻿@model filmdizikitap.Models.Blog
+
+@{
+    ViewBag.Title = "Sil";
+}
+
+<br /><br /><br />
+<div class="col-md-8" style="margin-left:20%;">
+
+
+    <h2>Sil</h2>
+
+    <h3>Silmek İstediğinize Emin Misiniz ?</h3>
+    <div>
+      
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Category.KategoriAdi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Category.KategoriAdi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Baslik)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Baslik)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Aciklama)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Aciklama)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Resim)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Resim)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Icerik)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Icerik)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Eklenme_Tarihi)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Eklenme_Tarihi)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Onay)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Onay)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Anasayfa)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Anasayfa)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Sil" class="btn btn-danger" /> 
+                @Html.ActionLink("Listeye Dön", "Index",null,new {@class = "btn btn-primary"})
+            </div>
+        }
+    </div>
+</div>
+
+<br /><br /><br />

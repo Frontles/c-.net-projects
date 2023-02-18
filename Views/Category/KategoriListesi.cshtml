@@ -1,0 +1,31 @@
+﻿
+@model IEnumerable<filmdizikitap.Models.Category>
+
+<div class="mb-5">
+    @using (Html.BeginForm("Category", "Blogs", FormMethod.Get))
+    {
+        <h3>Haberlerde Ara :</h3>
+        <div class="input-group">
+
+            @Html.TextBox("q", null, new { @class = "form-control" })
+            <div class="input-group-append">
+               
+                    <button class="btn btn-warning" type="submit"><i class="fa fa-search"></i></button>
+               
+            </div>
+        </div>
+    }
+</div>
+
+<div class="mb-5">
+    <h3 class="mb-4 section-title">Kategoriler</h3>
+    @foreach (var kategori in Model)
+    {
+
+        <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center"><a href="/Blogs/Category/@kategori.Id">@kategori.KategoriAdi</a></li>
+        </ul>
+
+    }
+    
+</div>
